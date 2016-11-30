@@ -1,3 +1,30 @@
+class Player
+  def initialize(player_name, player_health=100)
+    @player_name = player_name.capitalize
+    @player_health = player_health
+  end
+  
+  def to_s
+    "I' am #{@player_name} with health of #{@player_health}"
+  end
+  
+  def w00t
+    puts "#{@player_name} was w00ted!"
+    @player_health += 15
+  end
+  def blam
+    puts "#{@player_name} was blammed!"
+    @player_health -= 10
+  end
+end
+
+player1 = Player.new("moe",120)
+puts player1
+player1.w00t
+puts player1
+
+
+
 def time
   Time.new.strftime("%I:%M:%S")
 end
