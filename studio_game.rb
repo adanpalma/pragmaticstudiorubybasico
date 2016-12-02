@@ -1,7 +1,7 @@
 class Player
   attr_reader   :player_health
   attr_accessor :player_name
-  
+    
   def initialize(player_name, player_health=100)
     @player_name = player_name.capitalize
     @player_health = player_health
@@ -38,27 +38,33 @@ end
 time = Time.new
 puts "The game started on #{time.strftime("%A %d/%m/%Y at %I:%M %p")}"
 
-player1 = Player.new("moe",120)
-player2 = Player.new("larry",120)
+players = []
+players << Player.new("moe")
+players << Player.new("larry",60)
+players << Player.new("curly", 125)
 
+puts "the are #{players.count} players in the game:"
+players.each do |player|
+  puts player
+end
 
-player1.w00t
-player2.blam
+puts "showing health of each player"
+players.each do |player|
+  puts player.player_health
+end
 
-puts player1.player_name
-puts player1.player_health
-puts player1.score
+players[0].w00t
+players[0].w00t
+puts players[0]
 
+players[1].blam
+puts players[1]
 
-puts player2.player_name
-puts player2.player_health
-puts player2.score
+players.pop
+players << Player.new("shemp",90)
 
-player2.player_name="lawrence"
-puts player2.player_name
+puts players
 
-puts player1
-puts player2
 
 
 
