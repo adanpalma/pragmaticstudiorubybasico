@@ -31,6 +31,33 @@ class Player
   
 end
 
+class Game
+  attr_reader :title
+  def initialize(gametitle)
+    @title  = gametitle
+    @players = []
+  end
+  
+  def addplayers(player)
+    @players << player
+  end
+  
+  def play
+    puts "There are #{@players.size} in #{self.title}:"
+    puts @players
+    @players.each do |player|
+           player.blam
+           player.w00t
+           player.w00t
+           puts player
+        end
+  end
+  
+
+end
+
+
+
 def time
   Time.new.strftime("%I:%M:%S")
 end
@@ -38,33 +65,16 @@ end
 time = Time.new
 puts "The game started on #{time.strftime("%A %d/%m/%Y at %I:%M %p")}"
 
-players = []
-players << Player.new("moe")
-players << Player.new("larry",60)
-players << Player.new("curly", 125)
 
-puts "the are #{players.count} players in the game:"
-players.each do |player|
-  puts player
-end
+player1 = Player.new("moe")
+player2 = Player.new("larry",60)
+player3 = Player.new("curly",125)
 
-puts "showing health of each player"
-players.each do |player|
-  puts player.player_health
-end
-
-players[0].w00t
-players[0].w00t
-puts players[0]
-
-players[1].blam
-puts players[1]
-
-players.pop
-players << Player.new("shemp",90)
-
-puts players
-
+game = Game.new("Knuckleheads")
+game.addplayers(player1)
+game.addplayers(player2)
+game.addplayers(player3)
+game.play
 
 
 
