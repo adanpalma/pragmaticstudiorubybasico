@@ -12,7 +12,7 @@ class Player
   end  
   
   def to_s
-    "I' am #{@name} with a health of #{@health} and a score of #{self.score}"
+    "I am #{@name} with a health of #{@health} and a score of #{self.score}"
   end
   
   def w00t
@@ -31,8 +31,6 @@ class Player
   
 end
 
-puts __FILE__
-puts $0
 
 if __FILE__ == $0
   player = Player.new("moe")
