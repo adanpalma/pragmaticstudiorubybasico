@@ -14,7 +14,7 @@ describe Player do
     expect(@player.health).to eq(100)
   end
   
-
+         
   it "has a string representation" do
     
     expect(@player.to_s).to eq("I am Larry with a health of 100 and a score of 105")
@@ -39,6 +39,32 @@ describe Player do
     @player.blam
     expect(@player.health).to eq(90)  
   end
+  
+  context "a player has a health greater than 100" do
+     before do
+        @player = Player.new("larry",150)
+     end
+     
+     it "is strong" do
+        expect(@player).to be_strong
+     end
+     
+     
+  end
+  
+  context "when a player has a health less or equal to 100" do
+     before do
+        @player = Player.new("adan",100)
+     end
+     
+     it "is whimpi" do
+        expect(@player).not_to be_strong
+     end
+     
+     
+  end
+  
+  
   
    
 

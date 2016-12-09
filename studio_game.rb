@@ -25,7 +25,7 @@ game.play
 
 
 
-#puts "#{name1.capitalize}'s health is #{health1}"  
+#puts "#{name1.capitalize}'s health is #{health1}" 
 #puts "#{name2.upcase}'s health is #{health2}"
 #puts "#{name3} has a health of #{health3}".center(50,".")
 #puts "#{name4.capitalize.ljust(48,".")} #{health4} health"
