@@ -33,6 +33,10 @@ class Player
      @health > 100 
   end
   
+  def <=>(other_player)
+     other_player.score <=> self.score
+  end
+  
   
 end
 

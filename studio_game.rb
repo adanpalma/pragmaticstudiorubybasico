@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'game'
+require_relative 'die'
 
 def time
   Time.new.strftime("%I:%M:%S")
@@ -17,7 +18,10 @@ game = Game.new("Knuckleheads")
 game.addplayers(player1)
 game.addplayers(player2)
 game.addplayers(player3)
-game.play
+rounds = Die.new.roll
+game.play(rounds)
+game.print_stats
+
 
 
 
