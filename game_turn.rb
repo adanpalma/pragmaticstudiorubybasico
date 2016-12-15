@@ -1,5 +1,6 @@
 require_relative('die')
 require_relative('player')
+require_relative('treasure_trove')
 
 module GameTurn 
    def self.take_turn(player)
@@ -13,6 +14,13 @@ module GameTurn
       else
          player.blam          
       end  
+      treasure = find_treasure
+      puts " Player #{player.name} found a #{treasure.name} with a #{treasure.points} points"
+      
+   end
+   
+   def self.find_treasure
+      TreasureTrove.random       
    end
    
 end
