@@ -1,9 +1,12 @@
 require_relative 'player'
+require_relative 'treasure_trove'
+
 describe Player do
   
   before do
-    @player = Player.new("larry")
+    @player = Player.new("larry",100) 
   end
+  
   
   it "has a Capitalized title" do
         expect(@player.name).to eq("Larry")
@@ -15,17 +18,30 @@ describe Player do
   end
   
          
-  it "has a string representation" do
-    
-    expect(@player.to_s).to eq("I am Larry with a health of 100 and a score of 105")
+ 
+  it "computes a score as the sum of its health plus total treasure points" do
+     @player.found_treasure(Treasure.new(:hammer, 50))
+     @player.found_treasure(Treasure.new(:hammer, 50))
 
-  end
-
-  it "computes a score as the sum of its health and length of name" do
     
-    expect(@player.score).to eq(105)
+    expect(@player.score).to eq(200)
   end
   
+ context "Player has a string representation" do
+    before do
+       @player = Player.new("larry")
+       @player.found_treasure(Treasure.new(:hammer, 50))
+       @player.found_treasure(Treasure.new(:hammer, 50))
+    end
+    
+     
+  it "has a string representation" do
+          puts @player
+    
+    expect(@player.to_s).to eq("I am Larry health = 100, points = 100, score = 200")
+
+  end
+end
 
   it "increases health by 15 when w00ted" do
       
@@ -38,6 +54,23 @@ describe Player do
    
     @player.blam
     expect(@player.health).to eq(90)  
+  end
+  
+  
+  it "computes points as the sum of all treasure points" do
+    expect(@player.points).to eq(0)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(50)
+
+    @player.found_treasure(Treasure.new(:crowbar, 400))
+
+    expect(@player.points).to eq(450)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(500)
   end
   
   context "a player has a health greater than 100" do

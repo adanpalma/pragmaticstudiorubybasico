@@ -52,12 +52,27 @@ class Game
      #sorted_players = @players.sort {|p1,p2| p2.score <=> p1.score}
      
      
+     puts "Players Total Points"
+     @players.each do |player|
+        puts "\n #{player.name}'s point totals:"
+        puts "#{player.points} grand total points"
+     
+     end
+     
+     
+     
      puts "\n #{self.title} High Scores:"
      
       @players.sort.each do |player|
        puts "#{player.name.ljust(20,".")} #{player.score}"
      end    
   end
+  
+  def total_points
+     @players.reduce(0) do |sum,player|
+        sum += player.points
+      end
+   end
   
 end
 
