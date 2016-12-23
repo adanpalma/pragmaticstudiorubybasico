@@ -19,7 +19,7 @@ game.addplayers(player1)
 game.addplayers(player2)
 game.addplayers(player3)
 rounds = Die.new.roll
-game.play(rounds)
+game.play(10) { |totalpoints| totalpoints >= 2000 }
 game.print_stats
 
 

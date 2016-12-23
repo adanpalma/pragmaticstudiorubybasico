@@ -33,6 +33,12 @@ class Game
                         GameTurn.take_turn(player)              
                         puts player
                   end
+         if block_given?         
+             if yield(total_points)   
+                puts "\n\n ending game 2000+ points reached #{total_points}"
+                break
+             end
+         end                
         end
            
   end
@@ -51,12 +57,20 @@ class Game
      
      #sorted_players = @players.sort {|p1,p2| p2.score <=> p1.score}
      
+     @players.sort.each do |player|
+        puts "\n #{player.name}'s points totals:"
+             player.each_found_treasure do |treasure|
+             puts "#{treasure.points} totals #{treasure.name} points"
+          end
+          puts "\n #{player.points} grand totals..."     
+     end
+     
+     
      
      puts "Players Total Points"
      @players.each do |player|
         puts "\n #{player.name}'s point totals:"
         puts "#{player.points} grand total points"
-     
      end
      
      
@@ -79,5 +93,5 @@ end
 if __FILE__ == $0
   game = Game.new("Nuevo Juego")
   game.addplayers(Player.new("adan"))
-  game.play
+  game.play(4)
 end  
