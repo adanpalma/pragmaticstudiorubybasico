@@ -56,6 +56,14 @@ end
     expect(@player.health).to eq(90)  
   end
   
+  it "can be created from a csv file" do
+     player = Player.from_csv("Adan,50")
+     expect(player.name).to eq("Adan")
+     expect(player.health).to eq(50)
+     
+  end
+  
+  
   
   it "computes points as the sum of all treasure points" do
     expect(@player.points).to eq(0)

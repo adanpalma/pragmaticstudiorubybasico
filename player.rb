@@ -61,6 +61,12 @@ class Player
      @found_treasures.size
   end
   
+  def self.from_csv(player)
+     playername, health= player.split(",")
+     Player.new(playername, Integer(health))
+  end
+  
+  
 end
 
 
