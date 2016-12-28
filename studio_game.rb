@@ -9,18 +9,26 @@ end
 time = Time.new
 puts "The game started on #{time.strftime("%A %d/%m/%Y at %I:%M %p")}"
 
-
-player1 = Player.new("moe")
-player2 = Player.new("larry",60)
-player3 = Player.new("curly",125)
-
 game = Game.new("Knuckleheads")
-game.addplayers(player1)
-game.addplayers(player2)
-game.addplayers(player3)
-rounds = Die.new.roll
-game.play(10) { |totalpoints| totalpoints >= 2000 }
-game.print_stats
+
+game.load_players(ARGV.shift||"players.csv")
+
+rounds = Die.new.roll 
+loop do
+    puts "Enter numbers of rouds or 'quit' to exit "
+    answer = gets.chomp.downcase
+    case answer
+    when /^\d+$/
+       game.play(answer.to_i) 
+    when 'quit','exit'
+           game.print_stats 
+           break
+    else
+       puts "Please Enter a Number or 'quit'"                   
+    end
+    
+ end
+ game.save_high_scores
 
 
 

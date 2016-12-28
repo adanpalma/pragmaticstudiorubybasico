@@ -14,6 +14,32 @@ class Game
     @players << player
   end
   
+  def load_players(file)
+     File.readlines(file).each do |player|
+        playername, health= player.split(",")
+        
+        addplayers(Player.new(playername, Integer(health)))
+     
+     end
+     
+  
+  end
+  
+  def save_high_scores (file="high_scores.txt")
+     File.open(file,"w") do |file|
+        file.puts "#{@title} High Scores:"
+        @players.sort.each do |player|
+           file.puts "#{player.name.ljust(20,".")} #{player.score}"
+            
+        
+        end
+        
+     
+     end 
+  end
+  
+  
+  
   def play(rounds)
     puts "There are #{@players.size} in #{self.title}:"
     puts @players
