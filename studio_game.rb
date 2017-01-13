@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'clumsy_player'
 require_relative 'game'
 require_relative 'die'
 
@@ -12,6 +13,9 @@ puts "The game started on #{time.strftime("%A %d/%m/%Y at %I:%M %p")}"
 game = Game.new("Knuckleheads")
 
 game.load_players(ARGV.shift||"players.csv")
+
+clumsy_player = ClumsyPlayer.new("klutz",105)
+game.addplayers(clumsy_player)
 
 rounds = Die.new.roll 
 loop do
