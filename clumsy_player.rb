@@ -1,10 +1,24 @@
 require_relative 'player'
+require_relative 'treasure_trove'
 class ClumsyPlayer < Player
    
+   def initialize(name, health=100, boost=10)
+      
+      super(name,health)
+      @boost_factor = boost
+   end
+   
+   def w00t
+      @boost_factor.times {super}      
+   end
+   
    def found_treasure(treasure)
-      points = treasure.points / 2.0
-      @found_treasures[treasure.name] += points
-      puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
+      new_treasure = Treasure.new(treasure.name, treasure.points/2)
+      super(new_treasure)
+   end
+   
+   def boost_factor
+      @boost_factor
    end
    
    

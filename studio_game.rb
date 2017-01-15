@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'clumsy_player'
+require_relative 'berserk_player'
 require_relative 'game'
 require_relative 'die'
 
@@ -16,6 +17,10 @@ game.load_players(ARGV.shift||"players.csv")
 
 clumsy_player = ClumsyPlayer.new("klutz",105)
 game.addplayers(clumsy_player)
+
+berserkplayer = BerserkPlayer.new("berserker",50)
+game.addplayers(berserkplayer)
+
 
 rounds = Die.new.roll 
 loop do
