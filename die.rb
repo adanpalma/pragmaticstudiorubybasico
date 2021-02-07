@@ -1,5 +1,7 @@
 require_relative 'auditable'
 class Die
+
+
    include Auditable     
    attr_reader :number
    
@@ -13,4 +15,7 @@ class Die
       @number
    end
    
+   def aaaa
+   end
+
 end
